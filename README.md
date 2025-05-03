@@ -12,6 +12,8 @@ Este proyecto implementa un sistema de detección de fraude en transacciones de 
  models/             # Modelos entrenados
  notebooks/          # Jupyter notebooks
     EDA.ipynb       # Análisis exploratorio de datos
+    preprocessing.ipynb # Preprocesamiento de datos
+
  reports/            # Informes generados
     figures/        # Gráficas generadas
  src/                # Código fuente
@@ -20,6 +22,7 @@ Este proyecto implementa un sistema de detección de fraude en transacciones de 
     evaluate.py     # Evaluación de modelos
     generate_report.py # Generación de informes
     model_training.py # Entrenamiento de modelos
+    run_preprocessing.py # Script para ejecutar el preprocesamiento
     utils.py        # Utilidades
     visualization_helpers.py # Ayudantes para visualización
  .gitignore          # Archivos a ignorar por Git
@@ -69,6 +72,28 @@ Para ejecutar el notebook:
 \\\ash
 jupyter notebook notebooks/EDA.ipynb
 \\\
+
+
+## Preprocesamiento de Datos
+
+El módulo \src/data_prep.py\ contiene funciones para:
+
+- Carga y verificación de calidad de datos
+- Manejo de valores faltantes y outliers
+- Transformación y creación de características
+- División en conjuntos de entrenamiento y prueba
+- Balanceo de clases con SMOTE
+- Escalado de características
+
+El notebook \
+otebooks/preprocessing.ipynb\ muestra el proceso completo de preprocesamiento con visualizaciones.
+
+Para ejecutar el preprocesamiento desde la línea de comandos:
+\\\ash
+python src/run_preprocessing.py
+\\\
+
+
 
 ## Flujo de trabajo con Git
 
