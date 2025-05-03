@@ -1,64 +1,71 @@
-﻿# Detección de Fraude en Tarjetas de Crédito
+# Detección de Fraude en Tarjetas de Crédito
 
 Este proyecto implementa un sistema de detección de fraude en transacciones de tarjetas de crédito utilizando técnicas de aprendizaje automático.
 
 ## Estructura del Proyecto
 
-\\\
- data/               # Directorio para datos
+```
+data/               # Directorio para datos
     raw/            # Datos sin procesar
     interim/        # Datos intermedios
     processed/      # Datos procesados listos para modelado
- models/             # Modelos entrenados
- notebooks/          # Jupyter notebooks
-    EDA.ipynb       # Análisis exploratorio de datos
-    preprocessing.ipynb # Preprocesamiento de datos
- reports/            # Informes generados
+
+models/             # Modelos entrenados
+
+notebooks/          # Jupyter notebooks
+    01_EDA.ipynb               # Análisis exploratorio de datos
+    02_Preprocessing.ipynb    # Preprocesamiento de datos
+
+reports/            # Informes generados
     figures/        # Gráficas generadas
- src/                # Código fuente
-    config.py       # Configuración del proyecto
-    data_prep.py    # Preprocesamiento de datos
-    evaluate.py     # Evaluación de modelos
-    generate_report.py # Generación de informes
-    model_training.py # Entrenamiento de modelos
-    run_preprocessing.py # Script para ejecutar el preprocesamiento
-    utils.py        # Utilidades
-    visualization_helpers.py # Ayudantes para visualización
- .gitignore          # Archivos a ignorar por Git
- LICENSE             # Licencia del proyecto
- README.md           # Este archivo
- requirements.txt    # Dependencias del proyecto
-\\\
+
+src/                # Código fuente
+    config.py
+    data_prep.py
+    evaluate.py
+    generate_report.py
+    model_training.py
+    run_preprocessing.py
+    utils.py
+    visualization_helpers.py
+
+.gitignore
+LICENSE
+README.md
+requirements.txt
+```
 
 ## Instalación
 
 1. Clonar el repositorio:
-\\\ash
+
+```bash
 git clone https://github.com/TU_USUARIO/credit-fraud-detection.git
 cd credit-fraud-detection
-\\\
+```
 
 2. Crear un entorno virtual:
-\\\ash
+
+```bash
 python -m venv venv
-.\venv\Scripts\Activate  # Windows
-source venv/bin/activate  # Linux/Mac
-\\\
+.\venv\Scripts\activate        # Windows
+source venv/bin/activate       # Linux/Mac
+```
 
 3. Instalar dependencias:
-\\\ash
+
+```bash
 pip install -r requirements.txt
-\\\
+```
 
 4. Descargar el dataset:
-   - Ve a https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
-   - Descarga el archivo creditcard.csv
-   - Colócalo en la carpeta \data/raw/\
+   - Ve a [Kaggle: Credit Card Fraud Dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
+   - Descarga el archivo `creditcard.csv`
+   - Colócalo en la carpeta `data/raw/`
 
 ## Análisis Exploratorio de Datos
 
-El notebook \
-otebooks/EDA.ipynb\ contiene un análisis detallado del dataset, incluyendo:
+El notebook `notebooks/EDA.ipynb` contiene un análisis detallado del dataset, incluyendo:
 
 - Distribución de clases (fraude vs no fraude)
 - Análisis de variables numéricas
@@ -68,13 +75,14 @@ otebooks/EDA.ipynb\ contiene un análisis detallado del dataset, incluyendo:
 - Comparación entre transacciones fraudulentas y legítimas
 
 Para ejecutar el notebook:
-\\\ash
+
+```bash
 jupyter notebook notebooks/EDA.ipynb
-\\\
+```
 
 ## Preprocesamiento de Datos
 
-El módulo \src/data_prep.py\ contiene funciones para:
+El módulo `src/data_prep.py` contiene funciones para:
 
 - Carga y verificación de calidad de datos
 - Manejo de valores faltantes y outliers
@@ -83,13 +91,13 @@ El módulo \src/data_prep.py\ contiene funciones para:
 - Balanceo de clases con SMOTE
 - Escalado de características
 
-El notebook \
-otebooks/preprocessing.ipynb\ muestra el proceso completo de preprocesamiento con visualizaciones.
+El notebook `notebooks/preprocessing.ipynb` muestra el proceso completo de preprocesamiento con visualizaciones.
 
 Para ejecutar el preprocesamiento desde la línea de comandos:
-\\\ash
+
+```bash
 python src/run_preprocessing.py
-\\\
+```
 
 
 ## Entrenamiento de Modelos
@@ -124,15 +132,21 @@ Las visualizaciones y reportes se guardan en la carpeta eports/.
 
 Este proyecto sigue un flujo de trabajo basado en ramas:
 
-- \main\: Rama principal que contiene código estable y listo para producción
-- \desarrollo\: Rama de desarrollo donde se integran nuevas características
+- `main`: Rama principal que contiene código estable y listo para producción
+- `desarrollo`: Rama de desarrollo donde se integran nuevas características
 
 Para contribuir:
-1. Crea una nueva rama desde \desarrollo\
+
+1. Crea una nueva rama desde `desarrollo`
 2. Implementa tus cambios
-3. Crea un pull request a \desarrollo\
+3. Crea un pull request a `desarrollo`
 
 ## Licencia
 
+<<<<<<< HEAD
 Este proyecto está licenciado bajo la Licencia MIT - ver el archivo LICENSE para más detalles.
 
+=======
+Este proyecto está licenciado bajo la Licencia MIT - ver el archivo LICENSE para más detalles.
+
+>>>>>>> 681ed727d6bda136122c96e2efbef9422d51e80e
