@@ -4,32 +4,52 @@ Este proyecto implementa un sistema de detección de fraude en transacciones de 
 
 ## Estructura del Proyecto
 
-\\\
  data/               # Directorio para datos
+ 
     raw/            # Datos sin procesar
+    
     interim/        # Datos intermedios
+    
     processed/      # Datos procesados listos para modelado
+    
  models/             # Modelos entrenados
+ 
  notebooks/          # Jupyter notebooks
+ 
     EDA.ipynb       # Análisis exploratorio de datos
+    
     preprocessing.ipynb # Preprocesamiento de datos
 
  reports/            # Informes generados
+ 
     figures/        # Gráficas generadas
+    
  src/                # Código fuente
+ 
     config.py       # Configuración del proyecto
+    
     data_prep.py    # Preprocesamiento de datos
+    
     evaluate.py     # Evaluación de modelos
+    
     generate_report.py # Generación de informes
+    
     model_training.py # Entrenamiento de modelos
+    
     run_preprocessing.py # Script para ejecutar el preprocesamiento
+    
     utils.py        # Utilidades
+    
     visualization_helpers.py # Ayudantes para visualización
+    
  .gitignore          # Archivos a ignorar por Git
+ 
  LICENSE             # Licencia del proyecto
+ 
  README.md           # Este archivo
+ 
  requirements.txt    # Dependencias del proyecto
-\\\
+ 
 
 ## Instalación
 
@@ -40,14 +60,14 @@ cd credit-fraud-detection
 \\\
 
 2. Crear un entorno virtual:
-\\\ash
+\\\Bash
 python -m venv venv
 .\venv\Scripts\Activate  # Windows
 source venv/bin/activate  # Linux/Mac
 \\\
 
 3. Instalar dependencias:
-\\\ash
+\\\Bash
 pip install -r requirements.txt
 \\\
 
@@ -69,7 +89,7 @@ otebooks/EDA.ipynb\ contiene un análisis detallado del dataset, incluyendo:
 - Comparación entre transacciones fraudulentas y legítimas
 
 Para ejecutar el notebook:
-\\\ash
+\\\Bash
 jupyter notebook notebooks/EDA.ipynb
 \\\
 
@@ -85,11 +105,10 @@ El módulo \src/data_prep.py\ contiene funciones para:
 - Balanceo de clases con SMOTE
 - Escalado de características
 
-El notebook \
-otebooks/preprocessing.ipynb\ muestra el proceso completo de preprocesamiento con visualizaciones.
+El notebook \notebooks/preprocessing.ipynb\ muestra el proceso completo de preprocesamiento con visualizaciones.
 
 Para ejecutar el preprocesamiento desde la línea de comandos:
-\\\ash
+\\\Bash
 python src/run_preprocessing.py
 \\\
 
