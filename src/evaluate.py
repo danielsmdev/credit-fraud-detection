@@ -6,6 +6,13 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pickle  # Añade esta línea
+import joblib
+import os
+import time
+from typing import Dict, List, Tuple, Optional, Any, Union
+import glob
+
 from sklearn.metrics import (
     accuracy_score, precision_score, recall_score, f1_score, 
     roc_auc_score, confusion_matrix, classification_report,
@@ -15,11 +22,6 @@ from sklearn.metrics import (
 from sklearn.calibration import calibration_curve
 from sklearn.inspection import permutation_importance
 import shap
-import joblib
-import os
-import time
-from typing import Dict, List, Tuple, Optional, Any, Union
-import glob
 
 from src.config import (
     RANDOM_STATE, MODELS_DIR, REPORTS_DIR, FIGURES_DIR,
@@ -30,26 +32,46 @@ from src.data_prep import load_processed_data
 from src.model_training import load_model
 
 @timer_decorator
-def load_models(model_dir=MODELS_DIR, pattern='*.pkl', exclude_pattern='ensemble'):
+def load_models(model_dir=MODELS_DIR, pattern='*.pkl', exclude_patterns=None):
     """
     Carga todos los modelos guardados en el directorio especificado.
     
     Args:
         model_dir: Directorio donde se encuentran los modelos
         pattern: Patrón para buscar archivos de modelos
-        exclude_pattern: Patrón para excluir archivos
+        exclude_patterns: Lista de patrones para excluir archivos
         
     Returns:
         models: Diccionario con los modelos cargados
     """
     print(f"Cargando modelos desde {model_dir}...")
     
+    # Configurar patrones de exclusión por defecto
+    if exclude_patterns is None:
+        exclude_patterns = ['best_metrics', 'best_params', 'ensemble_weights']
+    
     # Buscar archivos de modelos
     model_files = glob.glob(os.path.join(model_dir, pattern))
     
+    # También buscar archivos .joblib si existen
+    model_files.extend(glob.glob(os.path.join(model_dir, "*.joblib")))
+    
     # Filtrar archivos excluidos
-    if exclude_pattern:
-        model_files = [f for f in model_files if exclude_pattern not in f]
+    filtered_files = []
+    for file in model_files:
+        should_exclude = False
+        for pattern in exclude_patterns:
+            if pattern in file:
+                should_exclude = True
+                break
+        if not should_exclude:
+            filtered_files.append(file)
+    
+    model_files = filtered_files
+    
+    if not model_files:
+        print(f"ADVERTENCIA: No se encontraron archivos de modelo en {model_dir}")
+        return {}
     
     models = {}
     for model_file in model_files:
@@ -58,10 +80,22 @@ def load_models(model_dir=MODELS_DIR, pattern='*.pkl', exclude_pattern='ensemble
         if '_20' in model_name:  # Remover timestamp si existe
             model_name = model_name.split('_20')[0]
         
-        # Cargar modelo
-        model = joblib.load(model_file)
-        models[model_name] = model
-        print(f"  Modelo '{model_name}' cargado desde {model_file}")
+        try:
+            # Cargar modelo
+            if model_file.endswith('.joblib'):
+                model = joblib.load(model_file)
+            else:
+                with open(model_file, 'rb') as f:
+                    model = pickle.load(f)
+            
+            # Verificar si es un modelo válido
+            if hasattr(model, "predict") or hasattr(model, "predict_proba"):
+                models[model_name] = model
+                print(f"  Modelo '{model_name}' cargado desde {model_file}")
+            else:
+                print(f"  ADVERTENCIA: El archivo {model_file} no contiene un modelo válido")
+        except Exception as e:
+            print(f"  ERROR al cargar {model_file}: {e}")
     
     print(f"Total de modelos cargados: {len(models)}")
     return models
@@ -86,13 +120,23 @@ def evaluate_model_detailed(model, X_test, y_test, model_name=None, threshold=0.
     
     print(f"Evaluando modelo: {model_name}")
     
+    # Verificar si el objeto es realmente un modelo
+    if not hasattr(model, "predict") and not hasattr(model, "predict_proba"):
+        print(f"ERROR: El objeto '{model_name}' no parece ser un modelo válido (es de tipo {type(model)})")
+        print(f"Contenido del objeto: {model}")
+        return None
+    
     # Obtener predicciones y probabilidades
-    if hasattr(model, "predict_proba"):
-        y_prob = model.predict_proba(X_test)[:, 1]
-        y_pred = (y_prob >= threshold).astype(int)
-    else:
-        y_prob = None
-        y_pred = model.predict(X_test)
+    try:
+        if hasattr(model, "predict_proba"):
+            y_prob = model.predict_proba(X_test)[:, 1]
+            y_pred = (y_prob >= threshold).astype(int)
+        else:
+            y_prob = None
+            y_pred = model.predict(X_test)
+    except Exception as e:
+        print(f"ERROR al hacer predicciones con el modelo '{model_name}': {e}")
+        return None
     
     # Calcular métricas básicas
     metrics = {
@@ -108,11 +152,6 @@ def evaluate_model_detailed(model, X_test, y_test, model_name=None, threshold=0.
         'y_pred': y_pred,
         'y_prob': y_prob
     }
-    
-    # Calcular métricas adicionales si hay probabilidades
-    if y_prob is not None:
-        metrics['roc_auc'] = roc_auc_score(y_test, y_prob)
-        metrics['avg_precision'] = average_precision_score(y_test, y_prob)
     
     # Imprimir métricas principales
     print(f"Métricas para {model_name}:")
@@ -143,7 +182,13 @@ def evaluate_all_models(models, X_test, y_test, threshold=0.5):
     
     for name, model in models.items():
         metrics = evaluate_model_detailed(model, X_test, y_test, name, threshold)
-        all_metrics[name] = metrics
+        if metrics is not None:  # Solo añadir si la evaluación fue exitosa
+            all_metrics[name] = metrics
+    
+    # Verificar si hay modelos evaluados
+    if not all_metrics:
+        print("ERROR: No se pudo evaluar ningún modelo correctamente")
+        return {}, pd.DataFrame()
     
     # Comparar modelos
     comparison_df = compare_models_detailed(all_metrics)

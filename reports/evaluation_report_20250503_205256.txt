@@ -1,0 +1,161 @@
+INFORME DE EVALUACIÓN DE MODELOS
+==================================================
+
+Fecha y hora: 2025-05-03 20:52:56
+
+RESUMEN DE MODELOS
+--------------------------------------------------
+                Modelo  Accuracy  Precision    Recall        F1
+4              xgboost  0.999471   0.882353  0.789474  0.833333
+3        random_forest  0.999489   0.934211  0.747368  0.830409
+1             lightgbm  0.999471   0.901235  0.768421  0.829545
+0    gradient_boosting  0.999383   0.857143  0.757895  0.804469
+2  logistic_regression  0.990061   0.129542  0.863158  0.225275
+
+DETALLES POR MODELO
+--------------------------------------------------
+
+Modelo: gradient_boosting
+=========================
+accuracy: 0.9994
+precision: 0.8571
+recall: 0.7579
+f1: 0.8045
+f2: 0.7759
+mcc: 0.8057
+kappa: 0.8042
+
+Informe de Clasificación:
+              precision    recall  f1-score   support
+
+   No Fraude       1.00      1.00      1.00     56651
+      Fraude       0.86      0.76      0.80        95
+
+    accuracy                           1.00     56746
+   macro avg       0.93      0.88      0.90     56746
+weighted avg       1.00      1.00      1.00     56746
+
+
+Matriz de Confusión:
+[[56639, 12]
+ [23, 72]]
+
+--------------------------------------------------
+
+Modelo: lightgbm
+================
+accuracy: 0.9995
+precision: 0.9012
+recall: 0.7684
+f1: 0.8295
+f2: 0.7918
+mcc: 0.8319
+kappa: 0.8293
+
+Informe de Clasificación:
+              precision    recall  f1-score   support
+
+   No Fraude       1.00      1.00      1.00     56651
+      Fraude       0.90      0.77      0.83        95
+
+    accuracy                           1.00     56746
+   macro avg       0.95      0.88      0.91     56746
+weighted avg       1.00      1.00      1.00     56746
+
+
+Matriz de Confusión:
+[[56643, 8]
+ [22, 73]]
+
+--------------------------------------------------
+
+Modelo: logistic_regression
+===========================
+accuracy: 0.9901
+precision: 0.1295
+recall: 0.8632
+f1: 0.2253
+f2: 0.4047
+mcc: 0.3322
+kappa: 0.2230
+
+Informe de Clasificación:
+              precision    recall  f1-score   support
+
+   No Fraude       1.00      0.99      0.99     56651
+      Fraude       0.13      0.86      0.23        95
+
+    accuracy                           0.99     56746
+   macro avg       0.56      0.93      0.61     56746
+weighted avg       1.00      0.99      0.99     56746
+
+
+Matriz de Confusión:
+[[56100, 551]
+ [13, 82]]
+
+--------------------------------------------------
+
+Modelo: random_forest
+=====================
+accuracy: 0.9995
+precision: 0.9342
+recall: 0.7474
+f1: 0.8304
+f2: 0.7785
+mcc: 0.8353
+kappa: 0.8302
+
+Informe de Clasificación:
+              precision    recall  f1-score   support
+
+   No Fraude       1.00      1.00      1.00     56651
+      Fraude       0.93      0.75      0.83        95
+
+    accuracy                           1.00     56746
+   macro avg       0.97      0.87      0.92     56746
+weighted avg       1.00      1.00      1.00     56746
+
+
+Matriz de Confusión:
+[[56646, 5]
+ [24, 71]]
+
+--------------------------------------------------
+
+Modelo: xgboost
+===============
+accuracy: 0.9995
+precision: 0.8824
+recall: 0.7895
+f1: 0.8333
+f2: 0.8065
+mcc: 0.8344
+kappa: 0.8331
+
+Informe de Clasificación:
+              precision    recall  f1-score   support
+
+   No Fraude       1.00      1.00      1.00     56651
+      Fraude       0.88      0.79      0.83        95
+
+    accuracy                           1.00     56746
+   macro avg       0.94      0.89      0.92     56746
+weighted avg       1.00      1.00      1.00     56746
+
+
+Matriz de Confusión:
+[[56641, 10]
+ [20, 75]]
+
+--------------------------------------------------
+
+CONCLUSIONES
+--------------------------------------------------
+El mejor modelo según F1 es: xgboost (F1 = 0.8333)
+
+Recomendaciones:
+1. Utilizar el modelo con mejor F1 para un equilibrio entre precisión y recall.
+2. Si se prioriza minimizar falsos negativos, considerar el modelo con mejor recall.
+3. Si se prioriza minimizar falsos positivos, considerar el modelo con mejor precisión.
+4. Considerar ajustar el umbral de clasificación según el análisis de costo-beneficio.
