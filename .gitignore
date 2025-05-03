@@ -1,0 +1,51 @@
+﻿# Archivos de datos
+data/raw/
+data/processed/
+*.csv
+*.xlsx
+*.xls
+
+# Archivos de modelos
+models/*.pkl
+models/*.joblib
+models/*.h5
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Entornos virtuales
+venv/
+ENV/
+env/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Archivos de configuración IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
