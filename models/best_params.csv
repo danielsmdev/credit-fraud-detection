@@ -1,0 +1,6 @@
+,solver,penalty,C,n_estimators,min_samples_split,min_samples_leaf,max_depth,subsample,learning_rate,scale_pos_weight,colsample_bytree,num_leaves
+logistic_regression,liblinear,l1,1.0,,,,,,,,,
+random_forest,,,,200.0,2.0,1.0,,,,,,
+gradient_boosting,,,,200.0,,,5.0,1.0,0.1,,,
+xgboost,,,,200.0,,,5.0,0.8,0.1,1.0,0.8,
+lightgbm,,,,200.0,,,-1.0,0.8,0.1,,,50.0

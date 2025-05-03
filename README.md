@@ -99,6 +99,35 @@ Para ejecutar el preprocesamiento desde la línea de comandos:
 python src/run_preprocessing.py
 ```
 
+
+## Entrenamiento de Modelos
+
+El notebook 
+otebooks/model_training.ipynb entrena y optimiza varios modelos de machine learning para la detección de fraude, incluyendo:
+
+- Random Forest
+- XGBoost
+- LightGBM
+- Gradient Boosting
+- Logistic Regression
+- SVM
+
+El proceso incluye:
+1. Entrenamiento de modelos base
+2. Comparación de rendimiento
+3. Optimización de hiperparámetros
+4. Análisis de características importantes
+5. Visualizaciones avanzadas
+6. Generación de informes
+
+Para ejecutar el entrenamiento:
+\\\ash
+jupyter notebook notebooks/model_training.ipynb
+\\\
+
+Los modelos entrenados se guardan en la carpeta models/ (no incluidos en Git debido a su tamaño).
+Las visualizaciones y reportes se guardan en la carpeta eports/.
+
 ## Flujo de trabajo con Git
 
 Este proyecto sigue un flujo de trabajo basado en ramas:
@@ -114,5 +143,10 @@ Para contribuir:
 
 ## Licencia
 
+<<<<<<< HEAD
 Este proyecto está licenciado bajo la Licencia MIT - ver el archivo LICENSE para más detalles.
 
+=======
+Este proyecto está licenciado bajo la Licencia MIT - ver el archivo LICENSE para más detalles.
+
+>>>>>>> 681ed727d6bda136122c96e2efbef9422d51e80e
