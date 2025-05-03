@@ -13,6 +13,7 @@ Este proyecto implementa un sistema de detección de fraude en transacciones de 
  notebooks/          # Jupyter notebooks
     EDA.ipynb       # Análisis exploratorio de datos
     preprocessing.ipynb # Preprocesamiento de datos
+
  reports/            # Informes generados
     figures/        # Gráficas generadas
  src/                # Código fuente
@@ -72,6 +73,7 @@ Para ejecutar el notebook:
 jupyter notebook notebooks/EDA.ipynb
 \\\
 
+
 ## Preprocesamiento de Datos
 
 El módulo \src/data_prep.py\ contiene funciones para:
@@ -90,6 +92,8 @@ Para ejecutar el preprocesamiento desde la línea de comandos:
 \\\ash
 python src/run_preprocessing.py
 \\\
+
+
 
 ## Flujo de trabajo con Git
 
