@@ -13,8 +13,8 @@ data/               # Directorio para datos
 models/             # Modelos entrenados
 
 notebooks/          # Jupyter notebooks
-    EDA.ipynb               # Análisis exploratorio de datos
-    preprocessing.ipynb    # Preprocesamiento de datos
+    01_EDA.ipynb               # Análisis exploratorio de datos
+    02_Preprocessing.ipynb    # Preprocesamiento de datos
 
 reports/            # Informes generados
     figures/        # Gráficas generadas
