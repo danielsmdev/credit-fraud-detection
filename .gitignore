@@ -2,13 +2,22 @@
 data/raw/
 data/processed/
 *.csv
-*.xlsx
-*.xls
+*.tsv
 
-# Archivos de modelos
-models/*.pkl
+# Modelos entrenados (pueden ser muy grandes)
 models/*.joblib
-models/*.h5
+models/*.pkl
+models/*.bin
+models/*.model
+
+# Excepciones - archivos pequeños que sí queremos incluir
+!models/README.md
+!models/best_params.csv
+
+# Entorno virtual
+venv/
+env/
+.env/
 
 # Archivos de Python
 __pycache__/
@@ -16,7 +25,6 @@ __pycache__/
 *.class
 *.so
 .Python
-env/
 build/
 develop-eggs/
 dist/
@@ -28,23 +36,17 @@ lib64/
 parts/
 sdist/
 var/
+wheels/
 *.egg-info/
 .installed.cfg
 *.egg
 
-# Entornos virtuales
-venv/
-ENV/
-env/
-
 # Jupyter Notebook
 .ipynb_checkpoints
 
-# Archivos de configuración IDE
-.idea/
-.vscode/
-*.swp
-*.swo
+# Logs
+logs/
+*.log
 
 # Archivos del sistema operativo
 .DS_Store
