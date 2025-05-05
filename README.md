@@ -121,12 +121,13 @@ El proceso incluye:
 6. Generación de informes
 
 Para ejecutar el entrenamiento:
-\\\ash
+```bash
 jupyter notebook notebooks/model_training.ipynb
-\\\
+```
 
 Los modelos entrenados se guardan en la carpeta models/ (no incluidos en Git debido a su tamaño).
-Las visualizaciones y reportes se guardan en la carpeta eports/.
+Las visualizaciones y reportes se guardan en la carpeta 
+eports/.
 
 ## Flujo de trabajo con Git
 
@@ -141,12 +142,15 @@ Para contribuir:
 2. Implementa tus cambios
 3. Crea un pull request a `desarrollo`
 
+## Documentación completa
+
+Para una documentación detallada del proyecto, consulta el archivo [DOCUMENTACION.md](./DOCUMENTACION.md) que incluye:
+- Descripción completa del flujo de trabajo
+- Resultados de la evaluación de modelos
+- Conclusiones y lecciones aprendidas
+- Instrucciones para retomar el proyecto
+- Próximos pasos potenciales
+
 ## Licencia
 
-<<<<<<< HEAD
 Este proyecto está licenciado bajo la Licencia MIT - ver el archivo LICENSE para más detalles.
-
-=======
-Este proyecto está licenciado bajo la Licencia MIT - ver el archivo LICENSE para más detalles.
-
->>>>>>> 681ed727d6bda136122c96e2efbef9422d51e80e
