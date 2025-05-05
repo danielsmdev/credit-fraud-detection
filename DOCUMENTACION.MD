@@ -5,7 +5,7 @@
 Este proyecto implementa un sistema de detección de fraude en transacciones de tarjetas de crédito utilizando técnicas de aprendizaje automático. Se ha desarrollado un flujo de trabajo completo que incluye la preparación de datos, entrenamiento de múltiples modelos y una evaluación exhaustiva para identificar el mejor modelo para la detección de fraude.
 
 ## Estructura del Proyecto
-
+```bash
 Credit_fraud/
 │
 ├── data/                      # Datos originales y procesados
@@ -53,6 +53,7 @@ Credit_fraud/
 ├── .gitignore                 # Archivos ignorados por Git
 ├── README.md                  # Documentación principal
 └── requirements.txt           # Dependencias del proyecto
+```
 
 ## Flujo de Trabajo Implementado
 
@@ -220,12 +221,12 @@ Para finalizar el proyecto y actualizar GitHub con esta documentación:
 
 Recursos y Referencias
 
-[Documentación de scikit-learn](https://scikit-learn.org/stable/documentation.html)
-[XGBoost Documentation](https://xgboost.readthedocs.io/)
-[LightGBM Documentation](https://lightgbm.readthedocs.io/)
-[SHAP Documentation](https://shap.readthedocs.io/)
-[Kaggle - Credit Card Fraud Detection](https://www.kaggle.com/mlg-ulb/creditcardfraud)
-[Towards Data Science - Credit Card Fraud Detection](https://towardsdatascience.com/credit-card-fraud-detection-using-machine-learning-python-5b098d4a8edc)
+- [Documentación de scikit-learn](https://scikit-learn.org/stable/documentation.html)
+- [XGBoost Documentation](https://xgboost.readthedocs.io/)
+- [LightGBM Documentation](https://lightgbm.readthedocs.io/)
+- [SHAP Documentation](https://shap.readthedocs.io/)
+- [Kaggle - Credit Card Fraud Detection](https://www.kaggle.com/mlg-ulb/creditcardfraud)
+- [Towards Data Science - Credit Card Fraud Detection](https://towardsdatascience.com/credit-card-fraud-detection-using-machine-learning-python-5b098d4a8edc)
 
 ## Lecciones Aprendidas
 
